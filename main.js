@@ -4,6 +4,8 @@
 import React,{ Component } from 'react';
 import ReactDOM from 'react-dom'
 
+import Menu from './src/menu'
+
 class Root extends Component {
     constructor (props) {
         super (props);
@@ -11,7 +13,7 @@ class Root extends Component {
     render () {
         return (
             <div className="container">
-                <span>Hello world!</span>
+                <span>{Menu.id}</span>
             </div>
         )
     }
