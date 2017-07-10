@@ -4,24 +4,40 @@
  * 后边应改为通过读取所有路由，动态的构建出菜单
  * 菜单最多3级
  */
-
+import React from 'react'
 import { Menu } from 'antd';
+const SubMenu = Menu.SubMenu;
+const MenuItem = Menu.Item;
 
+const menuData = [
+    {
+        id:1,
+        name:'name',
+        parentId:0,
+        dateType:'dataType',
+        dtos:[
+            {
+                id:11,
+                name:'name1',
+                parentId:1,
+                dateType:'dataType1',
+                dtos:[]
+            }
+        ]
+    }
+];
 
-const menu = {
-    id:1,
-    name:'name',
-    parentId:0,
-    dateType:'dataType',
-    dtos:[
-        {
-            id:11,
-            name:'name1',
-            parentId:1,
-            dateType:'dataType1',
-            dtos:[]
+function parseMenuData (menuData) {
+    menuData.map((menuItem) => {
+        if(menuItem.dtos.length == 0){
+            return <MenuItem key={menuItem.id}>{menuItem.name}</MenuItem>;
         }
-    ]
-};
+        return <SubMenu key={menuItem.id} title={menuItem.name}>{ parseMenuData(menuItem.dtos) }</SubMenu>;
+    });
+}
 
-export default menu;
+const NavMenu = <Menu theme='dark'>
+    { parseMenuData(menuData) }
+    </Menu>
+
+export default menuData;
