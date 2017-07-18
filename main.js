@@ -5,7 +5,7 @@ import React,{ Component } from 'react';
 import ReactDOM from 'react-dom'
 
 import NavMenu from './src/menu'
-import {Menu} from "antd";
+import { Menu, Button } from "antd";
 const SubMenu = Menu.SubMenu;
 const MenuItem = Menu.Item;
 
@@ -15,7 +15,7 @@ class Root extends Component {
     }
 
     parseMenuData = (menuData) => {
-        menuData.map((menuItem) => {
+        return menuData.map((menuItem) => {
             if(menuItem.dtos.length == 0){
                 return <MenuItem key={menuItem.id}>{menuItem.name}</MenuItem>;
             }
@@ -25,10 +25,12 @@ class Root extends Component {
 
     render () {
         return (
-            <div className="container">
-                <Menu theme='dark'>
-                    { this.parseMenuData(NavMenu) }
-                </Menu>
+            <div className="container" style={{ height:'100%' }}>
+                <div style={{ width:200, height:'100%' }}>
+                    <Menu theme='dark' mode='inline' style={{ height:'100%' }}>
+                        { this.parseMenuData(NavMenu) }
+                    </Menu>
+                </div>
             </div>
         )
     }

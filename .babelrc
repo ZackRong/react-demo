@@ -1,7 +1,8 @@
 {
   "presets": ["es2015", "react", "stage-0"],
   "plugins": [
-    "transform-class-properties"
-//    ["import", { "libraryName": "antd", "style": true}] // `style: true` 会加载 less 文件
+//    "transform-class-properties",
+//    ["import", { "libraryName": "antd", "style": true}]
+    ["import", { "libraryName": "antd", "style": true}] // `style: true` 会加载 less 文件
   ]
 }
